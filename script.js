@@ -73,13 +73,12 @@ function game() {
     }
   }
   if (playerScore > computerScore) {
-    return "You win!";
+    return " >>> Game over. You win!";
   } else if (computerScore > playerScore) {
-    return "Computer wins!";
+    return " >>> Game over. Computer wins!";
   } else {
-    return "Tie. Nobody wins";
+    return " >>> Game over. Tie. Nobody wins";
   }
 }
 
-// console.log(game());
-console.log(computerSelection());
+console.log(game());
