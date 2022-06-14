@@ -22,7 +22,7 @@ function playerSelection() {
   return play;
 }
 
-function round(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "Tie";
   } else if (playerSelection === "rock" && computerSelection === "paper") {
@@ -40,4 +40,4 @@ function round(playerSelection, computerSelection) {
   }
 }
 
-console.log(round(computerSelection(), computerSelection()));
+console.log(playRound(playerSelection(), computerSelection()));
