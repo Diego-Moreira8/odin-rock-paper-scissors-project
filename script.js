@@ -1,4 +1,4 @@
-// Creates a random play and return a string
+// Creates a random play for the computer and return in a string
 function computerSelection() {
   let play = "";
   switch (Math.floor(Math.random() * 3 + 1)) {
@@ -18,9 +18,10 @@ function computerSelection() {
 // Catch and validate input from the user and return a string
 function playerSelection() {
   let play = "";
-  do {
-    play = prompt("Enter your play:").toLowerCase();
-  } while (play !== "rock" && play !== "paper" && play !== "scissors");
+  play = prompt("Choose your weapon (rock, paper or scissors):").toLowerCase();
+  while (play !== "rock" && play !== "paper" && play !== "scissors") {
+    play = prompt("Incorrect! Enter your play:").toLowerCase();
+  }
   return play;
 }
 
@@ -80,4 +81,5 @@ function game() {
   }
 }
 
-console.log(game());
+// console.log(game());
+console.log(computerSelection());
