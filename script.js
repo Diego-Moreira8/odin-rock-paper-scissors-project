@@ -1,3 +1,4 @@
+// Creates a random play and return a string
 function computerSelection() {
   let play = "";
   switch (Math.floor(Math.random() * 3 + 1)) {
@@ -14,6 +15,7 @@ function computerSelection() {
   return play;
 }
 
+// Catch and validate input from the user and return a string
 function playerSelection() {
   let play = "";
   do {
@@ -22,22 +24,60 @@ function playerSelection() {
   return play;
 }
 
+// Compare the players selections and returns the winner
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return "Tie";
+    console.log("Tie");
+    return "tie";
   } else if (playerSelection === "rock" && computerSelection === "paper") {
-    return "Computer wins: paper eats rock";
+    console.log("Computer wins: paper eats rock");
+    return "computer";
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    return "Player wins: rock breaks scissors";
+    console.log("Player wins: rock breaks scissors");
+    return "player";
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    return "Player wins: paper eats rock";
+    console.log("Player wins: paper eats rock");
+    return "player";
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    return "Computer wins: scissors cuts paper";
+    console.log("Computer wins: scissors cuts paper");
+    return "computer";
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    return "Computer wins: rock breaks scissors";
+    console.log("Computer wins: rock breaks scissors");
+    return "computer";
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    return "Player wins: scissors cuts paper";
+    console.log("Player wins: scissors cuts paper");
+    return "player";
   }
 }
 
-console.log(playRound(playerSelection(), computerSelection()));
+// Loop 5 playRound(), stores the score and return the winner
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  for (let i = 0; i < 5; i++) {
+    console.log(`---Round ${i + 1}---`);
+    let result = playRound(playerSelection(), computerSelection());
+    if (result === "player") {
+      playerScore++;
+      console.log(`You scored! You: ${playerScore} x CPU: ${computerScore}`);
+    } else if (result === "computer") {
+      computerScore++;
+      console.log(
+        `Computer scored! You: ${playerScore} x CPU: ${computerScore}`
+      );
+    } else {
+      console.log(
+        `Tie! Nobody scores. You: ${playerScore} x CPU: ${computerScore}`
+      );
+    }
+  }
+  if (playerScore > computerScore) {
+    return "You win!";
+  } else if (computerScore > playerScore) {
+    return "Computer wins!";
+  } else {
+    return "Tie. Nobody wins";
+  }
+}
+
+console.log(game());
