@@ -11,13 +11,13 @@ body {
   font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
 }
 
-header {
+/* header {
   height: 3rem;
-}
+} */
 
 h1 {
   font-family: "Titan One", cursive;
-  font-size: 2rem;
+  font-size: 5rem;
   font-weight: normal;
   text-align: center;
 }
@@ -27,25 +27,27 @@ main {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: 700;
   text-align: center;
 }
 
 .weapons {
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  align-items: center;
   gap: 2rem;
 }
 
 .weapons button {
-  width: 12rem;
-  height: 12rem;
-  font-size: 6rem;
+  width: 20rem;
+  height: 15rem;
+  font-size: 7rem;
   padding: 1.5rem;
   background-color: var(--green);
   border: 10px solid var(--black);
   border-radius: 4rem;
+  cursor: pointer;
 }
 
 footer {
