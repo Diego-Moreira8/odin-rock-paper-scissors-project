@@ -4,6 +4,7 @@ const weaponsDiv = document.querySelector(".weapons");
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
+const restartButton = document.querySelector(".restart-button");
 
 const resultsDiv = document.querySelector(".results");
 const playerScoreSpan = document.querySelector("#player-score");
@@ -15,24 +16,19 @@ let playerScore = 0,
   roundCounter = 1;
 
 // Event listeners
-// for touchscreens
-// rockButton.addEventListener("touchstart", playRound);
-// paperButton.addEventListener("touchstart", playRound);
-// scissorsButton.addEventListener("touchstart", playRound);
-// for pointers
 rockButton.addEventListener("click", playRound);
 paperButton.addEventListener("click", playRound);
 scissorsButton.addEventListener("click", playRound);
+restartButton.addEventListener("click", resetGame);
 
-const restartButton = document.querySelector(".restart-button");
-restartButton.addEventListener("click", () => {
+function resetGame() {
   playerScoreSpan.innerText = playerScore = 0;
   computerScoreSpan.innerText = computerScore = 0;
   resultsDiv.innerText = "Aguardando jogada...";
   weaponsDiv.classList.toggle("hidden");
   restartButton.classList.toggle("hidden");
-  roundCounterDiv.innerText = `Round ${(roundCounter = 0)}`;
-});
+  roundCounterDiv.innerText = `Round ${(roundCounter = 1)}`;
+}
 
 // Verify if the game must continue
 function verifyScore(playerScore, computerScore) {
@@ -69,7 +65,6 @@ function playRound(playerSelection) {
   // playerSelection.preventDefault();
   const computerSelection = computerPlay();
   if (playerSelection.target.id === computerSelection) {
-    console.log("Tie");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsDiv.innerText = `Empate. Ninguém pontua.`;
     verifyScore(playerScore, computerScore);
@@ -78,7 +73,6 @@ function playRound(playerSelection) {
     playerSelection.target.id === "rock" &&
     computerSelection === "paper"
   ) {
-    console.log("Computer wins: paper eats rock");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsDiv.innerText = `Computador venceu: papel come pedra.`;
     computerScoreSpan.innerText = ++computerScore;
@@ -88,7 +82,6 @@ function playRound(playerSelection) {
     playerSelection.target.id === "rock" &&
     computerSelection === "scissors"
   ) {
-    console.log("Player wins: rock breaks scissors");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsDiv.innerText = `Você venceu: pedra quebra tesoura.`;
     playerScoreSpan.innerText = ++playerScore;
@@ -98,7 +91,6 @@ function playRound(playerSelection) {
     playerSelection.target.id === "paper" &&
     computerSelection === "rock"
   ) {
-    console.log("Player wins: paper eats rock");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsDiv.innerText = `Você venceu: papel come pedra.`;
     playerScoreSpan.innerText = ++playerScore;
@@ -108,7 +100,6 @@ function playRound(playerSelection) {
     playerSelection.target.id === "paper" &&
     computerSelection === "scissors"
   ) {
-    console.log("Computer wins: scissors cuts paper");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsDiv.innerText = `Computador venceu: tesoura corta papel.`;
     computerScoreSpan.innerText = ++computerScore;
@@ -118,7 +109,6 @@ function playRound(playerSelection) {
     playerSelection.target.id === "scissors" &&
     computerSelection === "rock"
   ) {
-    console.log("Computer wins: rock breaks scissors");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsDiv.innerText = `Computador venceu: pedra quebra tesoura.`;
     computerScoreSpan.innerText = ++computerScore;
@@ -128,7 +118,6 @@ function playRound(playerSelection) {
     playerSelection.target.id === "scissors" &&
     computerSelection === "paper"
   ) {
-    console.log("Player wins: scissors cuts paper");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsDiv.innerText = `Você venceu: tesoura corta papel.`;
     playerScoreSpan.innerText = ++playerScore;
