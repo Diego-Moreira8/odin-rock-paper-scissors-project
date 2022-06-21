@@ -13,8 +13,8 @@ body {
 
 h1 {
   font-family: "Titan One", Roboto, sans-serif;
-  margin-bottom: 3rem;
-  font-size: 5rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
   font-weight: normal;
   text-align: center;
 }
@@ -28,18 +28,18 @@ main {
 }
 
 .current-round {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   background-color: #59c9a5;
-  padding: 0.5rem 2rem;
-  border-radius: 2rem;
+  padding: 0.25rem 2rem;
+  border-radius: 1rem;
   box-shadow: 5px 5px var(--black);
 }
 
 h2 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
   font-weight: 700;
   text-align: center;
 }
@@ -48,18 +48,17 @@ h2 {
   display: flex;
   flex-flow: column;
   align-items: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .weapons button {
-  width: 20rem;
-  height: 15rem;
-  font-size: 7rem;
-  padding: 1.5rem;
+  font-size: 2.5rem;
+  width: 9rem;
+  height: 6rem;
   background-color: var(--green);
-  border: 10px solid var(--black);
-  border-radius: 4rem;
+  border: 5px solid var(--black);
+  border-radius: 2rem;
   cursor: pointer;
   transition: 100ms all ease-in-out;
 }
@@ -76,27 +75,27 @@ h2 {
 
 .results {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1rem;
   line-height: 1.2;
   font-weight: bold;
   background-color: var(--black);
   color: var(--light-green);
-  padding: 1rem 3rem;
+  padding: 0.5rem 2rem;
   border-radius: 2rem;
-  box-shadow: -10px 10px var(--green);
-  margin: 1.5rem 0;
+  box-shadow: -5px 5px var(--green);
+  margin: 0.5rem 0;
 }
 
 .score {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1rem;
   line-height: 1.2;
   font-weight: bold;
   background-color: var(--black);
   color: var(--light-green);
-  padding: 1rem 3rem;
+  padding: 0.5rem 2rem;
   border-radius: 2rem;
-  box-shadow: 10px 10px var(--green);
+  box-shadow: 5px 5px var(--green);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,17 +106,17 @@ h2 {
 #computer-score {
   color: var(--green);
   font-family: "Titan One", sans-serif;
-  font-size: 4rem;
+  font-size: 1rem;
   font-weight: normal;
 }
 
 .restart-button {
   background-color: var(--green);
   color: var(--black);
-  font-size: 3rem;
+  font-size: 1rem;
   font-family: Roboto, sans-serif;
   font-weight: bold;
-  padding: 1.5rem 3rem;
+  padding: 0;
   border-radius: 3rem;
   border: 12px solid var(--black);
   margin-top: 2rem;
@@ -130,12 +129,13 @@ h2 {
 }
 
 footer {
+  text-align: center;
   height: 6rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--black);
-  font-size: 2rem;
+  font-size: 1rem;
   color: var(--light-green);
 }
 
