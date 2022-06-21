@@ -7,6 +7,7 @@ const scissorsButton = document.querySelector("#scissors");
 const restartButton = document.querySelector(".restart-button");
 
 const resultsDiv = document.querySelector(".results");
+const computerPlayDiv = document.querySelector(".computer-play");
 const playerScoreSpan = document.querySelector("#player-score");
 const computerScoreSpan = document.querySelector("#computer-score");
 
@@ -25,6 +26,7 @@ function resetGame() {
   playerScoreSpan.innerText = playerScore = 0;
   computerScoreSpan.innerText = computerScore = 0;
   resultsDiv.innerText = "Aguardando jogada...";
+  computerPlayDiv.innerText = `...`;
   weaponsDiv.classList.toggle("hidden");
   restartButton.classList.toggle("hidden");
   roundCounterDiv.innerText = `Round ${(roundCounter = 1)}`;
@@ -64,6 +66,19 @@ function computerPlay() {
 function playRound(playerSelection) {
   // playerSelection.preventDefault();
   const computerSelection = computerPlay();
+  // Display computer selection
+  switch (computerSelection) {
+    case "rock":
+      computerPlayDiv.innerText = `Computador escolheu pedra`;
+      break;
+    case "paper":
+      computerPlayDiv.innerText = `Computador escolheu papel`;
+      break;
+    case "scissors":
+      computerPlayDiv.innerText = `Computador escolheu tesoura`;
+      break;
+  }
+
   if (playerSelection.target.id === computerSelection) {
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsDiv.innerText = `Empate. Ninguém pontua.`;

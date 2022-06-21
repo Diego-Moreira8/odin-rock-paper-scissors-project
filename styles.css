@@ -20,7 +20,7 @@ h1 {
 }
 
 main {
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 3rem);
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -36,8 +36,12 @@ main {
   box-shadow: 5px 5px var(--black);
 }
 
-h2 {
+.game-info {
   margin-top: 1rem;
+  font-size: 1rem;
+}
+
+h2 {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   font-weight: 700;
@@ -73,7 +77,7 @@ h2 {
   display: none;
 }
 
-.results {
+.frame {
   text-align: center;
   font-size: 1rem;
   line-height: 1.2;
@@ -87,15 +91,6 @@ h2 {
 }
 
 .score {
-  text-align: center;
-  font-size: 1rem;
-  line-height: 1.2;
-  font-weight: bold;
-  background-color: var(--black);
-  color: var(--light-green);
-  padding: 0.5rem 2rem;
-  border-radius: 2rem;
-  box-shadow: 5px 5px var(--green);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,7 +125,7 @@ h2 {
 
 footer {
   text-align: center;
-  height: 6rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
