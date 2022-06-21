@@ -1,23 +1,30 @@
+const roundCounterDiv = document.querySelector(".current-round");
+
+const weaponsDiv = document.querySelector(".weapons");
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
-const resultsDiv = document.querySelector(".results");
-const resultsText = document.createElement("p");
-const weaponsDiv = document.querySelector(".weapons");
-const roundCounterDiv = document.querySelector(".current-round");
 
+const resultsText = document.createElement("p");
+const resultsDiv = document.querySelector(".results");
+const playerScoreSpan = document.querySelector("#player-score");
+const computerScoreSpan = document.querySelector("#computer-score");
+
+// Counters
 let playerScore = 0,
   computerScore = 0,
   roundCounter = 1;
 
+// Event listeners
 rockButton.addEventListener("click", playRound);
 paperButton.addEventListener("click", playRound);
 scissorsButton.addEventListener("click", playRound);
 
 const restartButton = document.querySelector(".restart-button");
 restartButton.addEventListener("click", () => {
-  playerScore = 0;
-  computerScore = 0;
+  playerScoreSpan.innerText = playerScore = 0;
+  computerScoreSpan.innerText = computerScore = 0;
+  resultsDiv.innerText = "";
   weaponsDiv.classList.toggle("hidden");
   restartButton.classList.toggle("hidden");
   roundCounterDiv.innerText = `Round ${(roundCounter = 0)}`;
@@ -61,7 +68,7 @@ function playRound(playerSelection) {
   if (playerSelection.target.id === computerSelection) {
     console.log("Tie");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsText.innerText = `Empate. Ninguém pontua.\nPlacar:\nVocê ${playerScore} x ${computerScore} Computador`;
+    resultsText.innerText = `Empate. Ninguém pontua.`;
     resultsDiv.appendChild(resultsText);
     verifyScore(playerScore, computerScore);
     return "tie";
@@ -71,8 +78,9 @@ function playRound(playerSelection) {
   ) {
     console.log("Computer wins: paper eats rock");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsText.innerText = `Computador venceu: papel come pedra.\nPlacar:\nVocê ${playerScore} x ${++computerScore} Computador`;
+    resultsText.innerText = `Computador venceu: papel come pedra.`;
     resultsDiv.appendChild(resultsText);
+    computerScoreSpan.innerText = ++computerScore;
     verifyScore(playerScore, computerScore);
     return "computer";
   } else if (
@@ -81,8 +89,9 @@ function playRound(playerSelection) {
   ) {
     console.log("Player wins: rock breaks scissors");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsText.innerText = `Você venceu: pedra quebra tesoura.\nPlacar:\nVocê ${++playerScore} x ${computerScore} Computador`;
+    resultsText.innerText = `Você venceu: pedra quebra tesoura.`;
     resultsDiv.appendChild(resultsText);
+    playerScoreSpan.innerText = ++playerScore;
     verifyScore(playerScore, computerScore);
     return "player";
   } else if (
@@ -91,8 +100,9 @@ function playRound(playerSelection) {
   ) {
     console.log("Player wins: paper eats rock");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsText.innerText = `Você venceu: papel come pedra.\nPlacar:\nVocê ${++playerScore} x ${computerScore} Computador`;
+    resultsText.innerText = `Você venceu: papel come pedra.`;
     resultsDiv.appendChild(resultsText);
+    playerScoreSpan.innerText = ++playerScore;
     verifyScore(playerScore, computerScore);
     return "player";
   } else if (
@@ -101,8 +111,9 @@ function playRound(playerSelection) {
   ) {
     console.log("Computer wins: scissors cuts paper");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsText.innerText = `Computador venceu: tesoura corta papel.\nPlacar:\nVocê ${playerScore} x ${++computerScore} Computador`;
+    resultsText.innerText = `Computador venceu: tesoura corta papel.`;
     resultsDiv.appendChild(resultsText);
+    computerScoreSpan.innerText = ++computerScore;
     verifyScore(playerScore, computerScore);
     return "computer";
   } else if (
@@ -111,8 +122,9 @@ function playRound(playerSelection) {
   ) {
     console.log("Computer wins: rock breaks scissors");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsText.innerText = `Computador venceu: pedra quebra tesoura.\nPlacar:\nVocê ${playerScore} x ${++computerScore} Computador`;
+    resultsText.innerText = `Computador venceu: pedra quebra tesoura.`;
     resultsDiv.appendChild(resultsText);
+    computerScoreSpan.innerText = ++computerScore;
     verifyScore(playerScore, computerScore);
     return "computer";
   } else if (
@@ -121,8 +133,9 @@ function playRound(playerSelection) {
   ) {
     console.log("Player wins: scissors cuts paper");
     roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsText.innerText = `Você venceu: tesoura corta papel.\nPlacar:\nVocê ${++playerScore} x ${computerScore} Computador`;
+    resultsText.innerText = `Você venceu: tesoura corta papel.`;
     resultsDiv.appendChild(resultsText);
+    playerScoreSpan.innerText = ++playerScore;
     verifyScore(playerScore, computerScore);
     return "player";
   }
