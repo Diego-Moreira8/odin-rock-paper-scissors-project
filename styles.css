@@ -37,6 +37,7 @@ h2 {
   flex-flow: column;
   align-items: center;
   gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .weapons button {
@@ -48,6 +49,11 @@ h2 {
   border: 10px solid var(--black);
   border-radius: 4rem;
   cursor: pointer;
+}
+
+.results p {
+  text-align: center;
+  font-size: 3rem;
 }
 
 footer {
