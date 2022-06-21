@@ -21,7 +21,10 @@ h1 {
 }
 
 main {
-  height: 100vh;
+  height: calc(100vh - 6rem);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 h2 {
@@ -51,15 +54,33 @@ h2 {
   cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
 .results p {
   text-align: center;
   font-size: 3rem;
+  line-height: 2;
+}
+
+.restart-button {
+  background-color: var(--black);
+  color: var(--light-green);
+  font-size: 3rem;
+  font-family: Roboto, sans-serif;
+  padding: 1.5rem 3rem;
+  border-radius: 2rem;
+  margin-top: 2rem;
 }
 
 footer {
-  padding: 3rem;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--black);
-  text-align: center;
+  font-size: 2rem;
   color: var(--light-green);
 }
 
