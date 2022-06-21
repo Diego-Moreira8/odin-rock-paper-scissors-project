@@ -5,7 +5,6 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
-// const resultsText = document.createElement("p");
 const resultsDiv = document.querySelector(".results");
 const playerScoreSpan = document.querySelector("#player-score");
 const computerScoreSpan = document.querySelector("#computer-score");
@@ -17,9 +16,9 @@ let playerScore = 0,
 
 // Event listeners
 // for touchscreens
-rockButton.addEventListener("touchstart", playRound);
-paperButton.addEventListener("touchstart", playRound);
-scissorsButton.addEventListener("touchstart", playRound);
+// rockButton.addEventListener("touchstart", playRound);
+// paperButton.addEventListener("touchstart", playRound);
+// scissorsButton.addEventListener("touchstart", playRound);
 // for pointers
 rockButton.addEventListener("click", playRound);
 paperButton.addEventListener("click", playRound);
@@ -67,7 +66,7 @@ function computerPlay() {
 
 // Compare the players selections and returns the winner
 function playRound(playerSelection) {
-  playerSelection.preventDefault();
+  // playerSelection.preventDefault();
   const computerSelection = computerPlay();
   if (playerSelection.target.id === computerSelection) {
     console.log("Tie");
