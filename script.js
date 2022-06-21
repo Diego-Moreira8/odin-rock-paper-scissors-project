@@ -16,9 +16,14 @@ let playerScore = 0,
   roundCounter = 1;
 
 // Event listeners
+// for touchscreens
 rockButton.addEventListener("touchstart", playRound);
 paperButton.addEventListener("touchstart", playRound);
 scissorsButton.addEventListener("touchstart", playRound);
+// for pointers
+rockButton.addEventListener("click", playRound);
+paperButton.addEventListener("click", playRound);
+scissorsButton.addEventListener("click", playRound);
 
 const restartButton = document.querySelector(".restart-button");
 restartButton.addEventListener("click", () => {
@@ -62,6 +67,7 @@ function computerPlay() {
 
 // Compare the players selections and returns the winner
 function playRound(playerSelection) {
+  playerSelection.preventDefault();
   const computerSelection = computerPlay();
   if (playerSelection.target.id === computerSelection) {
     console.log("Tie");
