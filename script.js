@@ -1,3 +1,7 @@
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
 // Creates a random play for the computer and return in a string
 function computerSelection() {
   let play = "";
