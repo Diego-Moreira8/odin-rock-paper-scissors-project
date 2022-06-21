@@ -61,19 +61,20 @@ h2 {
   border: 10px solid var(--black);
   border-radius: 4rem;
   cursor: pointer;
-  transition: 100ms all;
+  transition: 100ms all ease-in-out;
 }
 
 .weapons button:active {
   background-color: #161616;
   transform: scale(0.95, 0.95);
+  transition: 100ms;
 }
 
 .hidden {
   display: none;
 }
 
-.results p {
+.results {
   text-align: center;
   font-size: 2.5rem;
   line-height: 1.2;
@@ -83,7 +84,7 @@ h2 {
   padding: 1rem 3rem;
   border-radius: 2rem;
   box-shadow: -10px 10px var(--green);
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
 }
 
 .score {
