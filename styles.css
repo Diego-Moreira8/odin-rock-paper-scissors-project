@@ -27,6 +27,15 @@ main {
   align-items: center;
 }
 
+.current-round {
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #59c9a5;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  box-shadow: 5px 5px var(--black);
+}
+
 h2 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;

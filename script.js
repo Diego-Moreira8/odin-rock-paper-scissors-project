@@ -4,22 +4,26 @@ const scissorsButton = document.querySelector("#scissors");
 const resultsDiv = document.querySelector(".results");
 const resultsText = document.createElement("p");
 const weaponsDiv = document.querySelector(".weapons");
-const restartButton = document.querySelector(".restart-button");
+const roundCounterDiv = document.querySelector(".current-round");
 
 let playerScore = 0,
-  computerScore = 0;
+  computerScore = 0,
+  roundCounter = 1;
 
 rockButton.addEventListener("click", playRound);
 paperButton.addEventListener("click", playRound);
 scissorsButton.addEventListener("click", playRound);
 
+const restartButton = document.querySelector(".restart-button");
 restartButton.addEventListener("click", () => {
   playerScore = 0;
   computerScore = 0;
   weaponsDiv.classList.toggle("hidden");
   restartButton.classList.toggle("hidden");
+  roundCounterDiv.innerText = `Round ${(roundCounter = 0)}`;
 });
 
+// Verify if the game must continue
 function verifyScore(playerScore, computerScore) {
   if (playerScore === 5) {
     resultsText.innerText = "Fim de jogo!\nVocê venceu!!!";
@@ -35,7 +39,7 @@ function verifyScore(playerScore, computerScore) {
 }
 
 // Creates a random play for the computer and return in a string
-function computerSelection() {
+function computerPlay() {
   let play = "";
   switch (Math.floor(Math.random() * 3 + 1)) {
     case 1:
@@ -53,62 +57,70 @@ function computerSelection() {
 
 // Compare the players selections and returns the winner
 function playRound(playerSelection) {
-  if (playerSelection.target.id === computerSelection()) {
+  const computerSelection = computerPlay();
+  if (playerSelection.target.id === computerSelection) {
     console.log("Tie");
+    roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsText.innerText = `Empate. Ninguém pontua.\nPlacar:\nVocê ${playerScore} x ${computerScore} Computador`;
     resultsDiv.appendChild(resultsText);
     verifyScore(playerScore, computerScore);
     return "tie";
   } else if (
     playerSelection.target.id === "rock" &&
-    computerSelection() === "paper"
+    computerSelection === "paper"
   ) {
     console.log("Computer wins: paper eats rock");
+    roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsText.innerText = `Computador venceu: papel come pedra.\nPlacar:\nVocê ${playerScore} x ${++computerScore} Computador`;
     resultsDiv.appendChild(resultsText);
     verifyScore(playerScore, computerScore);
     return "computer";
   } else if (
     playerSelection.target.id === "rock" &&
-    computerSelection() === "scissors"
+    computerSelection === "scissors"
   ) {
     console.log("Player wins: rock breaks scissors");
+    roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsText.innerText = `Você venceu: pedra quebra tesoura.\nPlacar:\nVocê ${++playerScore} x ${computerScore} Computador`;
     resultsDiv.appendChild(resultsText);
     verifyScore(playerScore, computerScore);
     return "player";
   } else if (
     playerSelection.target.id === "paper" &&
-    computerSelection() === "rock"
+    computerSelection === "rock"
   ) {
     console.log("Player wins: paper eats rock");
+    roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsText.innerText = `Você venceu: papel come pedra.\nPlacar:\nVocê ${++playerScore} x ${computerScore} Computador`;
     resultsDiv.appendChild(resultsText);
     verifyScore(playerScore, computerScore);
     return "player";
   } else if (
     playerSelection.target.id === "paper" &&
-    computerSelection() === "scissors"
+    computerSelection === "scissors"
   ) {
     console.log("Computer wins: scissors cuts paper");
+    roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsText.innerText = `Computador venceu: tesoura corta papel.\nPlacar:\nVocê ${playerScore} x ${++computerScore} Computador`;
     resultsDiv.appendChild(resultsText);
     verifyScore(playerScore, computerScore);
     return "computer";
   } else if (
     playerSelection.target.id === "scissors" &&
-    computerSelection() === "rock"
+    computerSelection === "rock"
   ) {
     console.log("Computer wins: rock breaks scissors");
+    roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsText.innerText = `Computador venceu: pedra quebra tesoura.\nPlacar:\nVocê ${playerScore} x ${++computerScore} Computador`;
     resultsDiv.appendChild(resultsText);
     verifyScore(playerScore, computerScore);
     return "computer";
   } else if (
     playerSelection.target.id === "scissors" &&
-    computerSelection() === "paper"
+    computerSelection === "paper"
   ) {
     console.log("Player wins: scissors cuts paper");
+    roundCounterDiv.innerText = `Round ${++roundCounter}`;
     resultsText.innerText = `Você venceu: tesoura corta papel.\nPlacar:\nVocê ${++playerScore} x ${computerScore} Computador`;
     resultsDiv.appendChild(resultsText);
     verifyScore(playerScore, computerScore);
