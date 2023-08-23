@@ -20,7 +20,9 @@
       <h1>Pedra, Papel ou Tesoura?</h1>
       <main>
         <div>Quem conseguir 5 pontos primeiro vence!</div>
-        <div class="styled-container current-round"></div>
+        <div class="styled-container">
+          Round <span class="current-round"></span>
+        </div>
         <div class="weapons">
           <h2>Escolha sua arma:</h2>
           <ul>
@@ -31,14 +33,28 @@
             </li>
           </ul>
         </div>
-        <div class="styled-container computer-move"></div>
-        <div class="styled-container player-move"></div>
+        <div class="styled-container">
+          Computador escolheu
+          <span class="computer-move"></span>
+        </div>
+        <div class="styled-container">
+          Você escolheu
+          <span class="player-move"></span>
+        </div>
         <div class="styled-container round-result"></div>
         <div class="styled-container score">
-          Você<span id="player-score">0</span>x
-          <span id="computer-score">0</span>Computador
+          🤓 Você<span id="player-score">0</span>x
+          <span id="computer-score">0</span>Computador 🤖
         </div>
       </main>
+    </div>
+
+    <div class="game-over-alert hidden">
+      <div class="styled-container">
+        <h2>Fim de jogo!</h2>
+        <div><span class="winner">Você</span> venceu.</div>
+        <button type="button">Jogar de novo</button>
+      </div>
     </div>
 
     <footer>
