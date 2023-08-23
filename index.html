@@ -16,32 +16,34 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <h1>Pedra, Papel ou Tesoura?</h1>
+
     <main>
-      <h1>Pedra, Papel ou Tesoura?</h1>
-      <div class="current-round">Round 1</div>
+      <div>Quem conseguir 5 pontos primeiro vence!</div>
+
+      <div class="styled-container current-round"></div>
       <div class="weapons">
-        <div class="game-info">Quem fazer 5 pontos primeiro vence!</div>
-        <h2>Escolha sua arma</h2>
-        <button id="rock">✊</button>
-        <button id="paper">✋</button>
-        <button id="scissors">✌</button>
+        <h2>Escolha sua arma:</h2>
+        <ul>
+          <li class="weapon"><button id="rock" title="Pedra">✊</button></li>
+          <li class="weapon"><button id="paper" title="Papel">✋</button></li>
+          <li class="weapon">
+            <button id="scissors" title="Tesoura">✌</button>
+          </li>
+        </ul>
       </div>
-      <div class="frame computer-play">...</div>
-      <div class="frame results">Aguardando jogada...</div>
-      <div class="frame score">
+
+      <div class="styled-container computer-move"></div>
+      <div class="styled-container player-move"></div>
+
+      <div class="styled-container round-result"></div>
+
+      <div class="styled-container score">
         Você<span id="player-score">0</span>x
         <span id="computer-score">0</span>Computador
       </div>
-      <button class="restart-button hidden">Jogar de novo</button>
     </main>
-    <footer>
-      <address>
-        Diego Moreira de Oliveira -
-        <a href="mailto:diego.moreira529@gmail.com"
-          >diego.moreira529@gmail.com</a
-        >
-      </address>
-    </footer>
-    <script src="./script.js"></script>
+
+    <!-- <script src="./script.js"></script> -->
   </body>
 </html>

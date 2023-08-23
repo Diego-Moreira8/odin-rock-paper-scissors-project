@@ -2,44 +2,31 @@
   --black: #161616;
   --light-green: #b9e3c6;
   --green: #59c9a5;
+  font-family: Roboto, sans-serif;
 }
 
 body {
-  margin: 0;
   background-color: var(--light-green);
   color: var(--black);
-  font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.styled-container {
+  text-align: center;
+  font-weight: bold;
+  background-color: var(--black);
+  color: var(--light-green);
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  box-shadow: -5px 5px var(--green);
+  margin: 0.5rem 0;
 }
 
 h1 {
   font-family: "Titan One", Roboto, sans-serif;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  font-weight: normal;
-  text-align: center;
-}
-
-main {
-  min-height: 100vh;
-  padding: 1rem;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.current-round {
-  font-size: 1rem;
+  font-size: 3rem;
+  margin: 1rem 0;
   font-weight: bold;
-  background-color: #59c9a5;
-  padding: 0.25rem 2rem;
-  border-radius: 1rem;
-  box-shadow: 5px 5px var(--black);
-}
-
-.game-info {
-  margin-top: 1rem;
-  font-size: 1rem;
+  text-align: center;
 }
 
 h2 {
@@ -49,12 +36,24 @@ h2 {
   text-align: center;
 }
 
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 1rem 0;
+}
+
 .weapons {
   display: flex;
   flex-flow: column;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  padding: 1rem 0;
+}
+
+.weapons ul {
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
 }
 
 .weapons button {
@@ -69,72 +68,23 @@ h2 {
 }
 
 .weapons button:active {
-  background-color: #161616;
-  transform: scale(0.95, 0.95);
-  transition: 100ms;
-}
-
-.hidden {
-  display: none;
-}
-
-.frame {
-  text-align: center;
-  font-size: 1rem;
-  line-height: 1.2;
-  font-weight: bold;
   background-color: var(--black);
-  color: var(--light-green);
-  padding: 0.5rem 2rem;
-  border-radius: 2rem;
-  box-shadow: -5px 5px var(--green);
-  margin: 0.5rem 0;
+  transform: scale(0.95, 0.95);
 }
 
 .score {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 #player-score,
 #computer-score {
   color: var(--green);
   font-family: "Titan One", sans-serif;
-  font-size: 1rem;
   font-weight: normal;
 }
 
-.restart-button {
-  background-color: var(--green);
-  color: var(--black);
-  font-size: 1rem;
-  font-family: Roboto, sans-serif;
-  font-weight: bold;
-  padding: 0.5rem 3rem;
-  border-radius: 1rem;
-  border: 5px solid var(--black);
-  margin-top: 2rem;
-  cursor: pointer;
-  transition: 100ms all;
-}
-
-.restart-button:active {
-  transform: scale(1.1, 1.1);
-}
-
-footer {
-  text-align: center;
-  padding: 1rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--black);
-  font-size: 1rem;
-  color: var(--light-green);
-}
-
-footer a {
-  color: var(--green);
+.game-over-alert {
+  display: none;
+  border: 1px solid black;
 }
