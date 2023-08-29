@@ -109,24 +109,8 @@ main {
   font-weight: normal;
 }
 
-.game-over-alert {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(5px);
-  background-color: #ffffff22;
-  z-index: 1; /* Put the overlay in front of the footer */
-}
-
 .game-over-alert.hidden {
   display: none;
-}
-
-.game-over-alert .styled-container {
-  width: fit-content;
-  padding: 2rem 3rem;
-  margin: 3rem auto;
 }
 
 footer {

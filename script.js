@@ -1,142 +1,152 @@
-const roundCounterDiv = document.querySelector(".current-round");
+function getPlayerMove() {
+  return new Promise((resolve) => {
+    const weaponsBtns = document.querySelectorAll(".weapon");
 
-const weaponsDiv = document.querySelector(".weapons");
-const rockButton = document.querySelector("#rock");
-const paperButton = document.querySelector("#paper");
-const scissorsButton = document.querySelector("#scissors");
-const restartButton = document.querySelector(".restart-button");
+    function handleClick(e) {
+      let weapon = e.target.id;
 
-const resultsDiv = document.querySelector(".results");
-const computerPlayDiv = document.querySelector(".computer-play");
-const playerScoreSpan = document.querySelector("#player-score");
-const computerScoreSpan = document.querySelector("#computer-score");
+      weaponsBtns.forEach((btn) =>
+        btn.removeEventListener("click", handleClick)
+      );
 
-// Counters
-let playerScore = 0,
-  computerScore = 0,
-  roundCounter = 1;
+      resolve(weapon);
+    }
 
-// Event listeners
-rockButton.addEventListener("click", playRound);
-paperButton.addEventListener("click", playRound);
-scissorsButton.addEventListener("click", playRound);
-restartButton.addEventListener("click", resetGame);
-
-function resetGame() {
-  playerScoreSpan.innerText = playerScore = 0;
-  computerScoreSpan.innerText = computerScore = 0;
-  resultsDiv.innerText = "Aguardando jogada...";
-  computerPlayDiv.innerText = `...`;
-  weaponsDiv.classList.toggle("hidden");
-  restartButton.classList.toggle("hidden");
-  roundCounterDiv.innerText = `Round ${(roundCounter = 1)}`;
+    weaponsBtns.forEach((btn) => btn.addEventListener("click", handleClick));
+  });
 }
 
-// Verify if the game must continue
-function verifyScore(playerScore, computerScore) {
-  if (playerScore === 5) {
-    resultsDiv.innerText = "Fim de jogo!\nVocê venceu!!!";
-    weaponsDiv.classList.toggle("hidden");
-    restartButton.classList.toggle("hidden");
-  } else if (computerScore === 5) {
-    resultsDiv.innerText = "Fim de jogo.\nComputador venceu.";
-    weaponsDiv.classList.toggle("hidden");
-    restartButton.classList.toggle("hidden");
-  }
-}
+function getComputerMove() {
+  const computerMove = Math.floor(Math.random() * 3) + 1;
 
-// Creates a random play for the computer and return in a string
-function computerPlay() {
-  let play = "";
-  switch (Math.floor(Math.random() * 3 + 1)) {
+  switch (computerMove) {
     case 1:
-      play = "rock";
-      break;
+      return "rock";
     case 2:
-      play = "paper";
-      break;
+      return "paper";
     case 3:
-      play = "scissors";
-      break;
-  }
-  return play;
-}
-
-// Compare the players selections and returns the winner
-function playRound(playerSelection) {
-  // playerSelection.preventDefault();
-  const computerSelection = computerPlay();
-  // Display computer selection
-  switch (computerSelection) {
-    case "rock":
-      computerPlayDiv.innerText = `Computador escolheu pedra`;
-      break;
-    case "paper":
-      computerPlayDiv.innerText = `Computador escolheu papel`;
-      break;
-    case "scissors":
-      computerPlayDiv.innerText = `Computador escolheu tesoura`;
-      break;
-  }
-
-  if (playerSelection.target.id === computerSelection) {
-    roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsDiv.innerText = `Empate. Ninguém pontua.`;
-    verifyScore(playerScore, computerScore);
-    return "tie";
-  } else if (
-    playerSelection.target.id === "rock" &&
-    computerSelection === "paper"
-  ) {
-    roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsDiv.innerText = `Computador venceu: papel come pedra.`;
-    computerScoreSpan.innerText = ++computerScore;
-    verifyScore(playerScore, computerScore);
-    return "computer";
-  } else if (
-    playerSelection.target.id === "rock" &&
-    computerSelection === "scissors"
-  ) {
-    roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsDiv.innerText = `Você venceu: pedra quebra tesoura.`;
-    playerScoreSpan.innerText = ++playerScore;
-    verifyScore(playerScore, computerScore);
-    return "player";
-  } else if (
-    playerSelection.target.id === "paper" &&
-    computerSelection === "rock"
-  ) {
-    roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsDiv.innerText = `Você venceu: papel come pedra.`;
-    playerScoreSpan.innerText = ++playerScore;
-    verifyScore(playerScore, computerScore);
-    return "player";
-  } else if (
-    playerSelection.target.id === "paper" &&
-    computerSelection === "scissors"
-  ) {
-    roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsDiv.innerText = `Computador venceu: tesoura corta papel.`;
-    computerScoreSpan.innerText = ++computerScore;
-    verifyScore(playerScore, computerScore);
-    return "computer";
-  } else if (
-    playerSelection.target.id === "scissors" &&
-    computerSelection === "rock"
-  ) {
-    roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsDiv.innerText = `Computador venceu: pedra quebra tesoura.`;
-    computerScoreSpan.innerText = ++computerScore;
-    verifyScore(playerScore, computerScore);
-    return "computer";
-  } else if (
-    playerSelection.target.id === "scissors" &&
-    computerSelection === "paper"
-  ) {
-    roundCounterDiv.innerText = `Round ${++roundCounter}`;
-    resultsDiv.innerText = `Você venceu: tesoura corta papel.`;
-    playerScoreSpan.innerText = ++playerScore;
-    verifyScore(playerScore, computerScore);
-    return "player";
+      return "scissors";
   }
 }
+
+function evaluateMoves(playerMove, computerMove) {
+  // Result: 0: tie, 1: player wins, 2 computer wins
+  let details = [
+    "Empate",
+    "papel embala pedra",
+    "pedra quebra tesoura",
+    "tesoura corta papel",
+  ];
+
+  if (playerMove === computerMove) {
+    return { result: 0, details: details[0] };
+  } else if (playerMove === "rock") {
+    if (computerMove === "paper") {
+      return { result: 2, details: `Computador venceu: ${details[1]}` };
+    } else if (computerMove === "scissors") {
+      return { result: 1, details: `Você venceu: ${details[2]}` };
+    }
+  } else if (playerMove === "paper") {
+    if (computerMove === "rock") {
+      return { result: 1, details: `Você venceu: ${details[1]}` };
+    } else if (computerMove === "scissors") {
+      return { result: 2, details: `Computador venceu: ${details[3]}` };
+    }
+  } else if (playerMove === "scissors") {
+    if (computerMove === "rock") {
+      return { result: 2, details: `Computador venceu: ${details[2]}` };
+    } else if (computerMove === "paper") {
+      return { result: 1, details: `Você venceu: ${details[3]}` };
+    }
+  }
+}
+
+function updateUI(
+  currentRound,
+  computerMove,
+  playerMove,
+  evaluation,
+  playerScore,
+  computerScore
+) {
+  const currentRoundElement = document.querySelector(".current-round");
+  const computerMoveElement = document.querySelector(".computer-move");
+  const playerMoveElement = document.querySelector(".player-move");
+  const roundResultElement = document.querySelector(".round-result");
+  const playerScoreElement = document.querySelector("#player-score");
+  const computerScoreElement = document.querySelector("#computer-score");
+
+  // If no arguments, reset UI
+  if (arguments.length === 0) {
+    currentRoundElement.textContent = 1;
+    computerMoveElement.textContent = "...";
+    playerMoveElement.textContent = "...";
+    roundResultElement.textContent = "...";
+    playerScoreElement.textContent = 0;
+    computerScoreElement.textContent = 0;
+  } else {
+    const wepaonsTranslation = {
+      rock: "pedra",
+      paper: "papel",
+      scissors: "tesoura",
+    };
+
+    currentRoundElement.textContent = currentRound;
+    computerMoveElement.textContent = wepaonsTranslation[computerMove];
+    playerMoveElement.textContent = wepaonsTranslation[playerMove];
+    roundResultElement.textContent = evaluation.details;
+    playerScoreElement.textContent = playerScore;
+    computerScoreElement.textContent = computerScore;
+  }
+}
+
+function gameOverAlert(playerWin) {
+  const alertDiv = document.querySelector(".game-over-alert");
+  const winnerSpan = document.querySelector(".winner");
+
+  alertDiv.classList.remove("hidden");
+  winnerSpan.textContent = playerWin ? "Você" : "O computador";
+
+  return new Promise((resolve) => {
+    const restartButton = document.querySelector(".restart-game");
+
+    function handleClick() {
+      alertDiv.classList.add("hidden");
+      restartButton.removeEventListener("click", handleClick);
+      resolve();
+    }
+
+    restartButton.addEventListener("click", handleClick);
+  });
+}
+
+(async function gameLoop() {
+  while (true) {
+    updateUI();
+
+    let playerScore = 0,
+      computerScore = 0,
+      currentRound = 1;
+
+    while (playerScore < 5 && computerScore < 5) {
+      const playerMove = await getPlayerMove();
+      const computerMove = getComputerMove();
+      const evaluation = evaluateMoves(playerMove, computerMove);
+
+      if (evaluation.result === 1) playerScore++;
+      else if (evaluation.result === 2) computerScore++;
+      currentRound++;
+
+      updateUI(
+        currentRound,
+        computerMove,
+        playerMove,
+        evaluation,
+        playerScore,
+        computerScore
+      );
+    }
+
+    await gameOverAlert(playerScore > computerScore);
+  }
+})();

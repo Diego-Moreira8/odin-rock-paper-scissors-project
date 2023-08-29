@@ -26,35 +26,37 @@
         <div class="weapons">
           <h2>Escolha sua arma:</h2>
           <ul>
-            <li class="weapon"><button id="rock" title="Pedra">✊</button></li>
-            <li class="weapon"><button id="paper" title="Papel">✋</button></li>
-            <li class="weapon">
-              <button id="scissors" title="Tesoura">✌</button>
+            <li>
+              <button class="weapon" id="rock" title="Pedra">✊</button>
+            </li>
+            <li>
+              <button class="weapon" id="paper" title="Papel">✋</button>
+            </li>
+            <li>
+              <button class="weapon" id="scissors" title="Tesoura">✌</button>
             </li>
           </ul>
         </div>
         <div class="styled-container">
-          Computador escolheu
-          <span class="computer-move"></span>
-        </div>
-        <div class="styled-container">
           Você escolheu
           <span class="player-move"></span>
+        </div>
+        <div class="styled-container">
+          Computador escolheu
+          <span class="computer-move"></span>
         </div>
         <div class="styled-container round-result"></div>
         <div class="styled-container score">
           🤓 Você<span id="player-score">0</span>x
           <span id="computer-score">0</span>Computador 🤖
         </div>
-      </main>
-    </div>
 
-    <div class="game-over-alert hidden">
-      <div class="styled-container">
-        <h2>Fim de jogo!</h2>
-        <div><span class="winner">Você</span> venceu.</div>
-        <button type="button">Jogar de novo</button>
-      </div>
+        <div class="game-over-alert styled-container hidden">
+          <h2>Fim de jogo!</h2>
+          <div><span class="winner">Você</span> venceu.</div>
+          <button class="restart-game" type="button">Jogar de novo</button>
+        </div>
+      </main>
     </div>
 
     <footer>
@@ -112,6 +114,6 @@
       </div>
     </footer>
 
-    <!-- <script src="./script.js"></script> -->
+    <script src="./script.js"></script>
   </body>
 </html>
